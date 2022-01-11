@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="www.cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <div class="" id="app">
+      <div class="navigation">
+        <div class="logo">
+          <span class="material-icons">language</span>
+          <h1 class="logo-name">Brand Name</h1>
+        </div>
+        <ul class="list">
+          <li class="nav-item" ref="test">
+            <span class="material-icons">home</span>
+            <span>Home</span>
+          </li>
+          <li class="nav-item" ref="test">
+            <span class="material-icons">dashboard</span>
+            <span>Dashboard</span>
+          </li>
+          <li class="nav-item" ref="test">
+            <span class="material-icons">groups</span>
+            <span>Customers</span>
+          </li>
+          <li class="nav-item">
+            <span class="material-icons">chat</span>
+            <span>Messages</span>
+          </li>
+          <li class="nav-item">
+            <span class="material-icons">help</span>
+            <span>Help</span>
+          </li>
+          <li class="nav-item">
+            <span class="material-icons">settings</span>
+            <span>Settings</span>
+          </li>
+          <li class="nav-item">
+            <span class="material-icons">lock</span>
+            <span>Password</span>
+          </li>
+          <li class="nav-item">
+            <span class="material-icons">logout</span>
+            <span>Sign Out</span>
+          </li>
+        </ul>
+      </div>
+      <div class="container">
+        <div class="nav-top">
+          <div class="nav-top-menu">
+            <span class="material-icons">menu</span>
+          </div>
+          <div class="nav-top-search">
+            <div class="input-search">
+              <span class="material-icons">
+                search
+                </span>
+              <input type="text" placeholder="Search Here">
+            </div>
+          </div>
+          <div class="nav-top-user">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+          </div>
+        </div>
+        <div class="content">
+          <div class="cards">
+            <div>
+              <div class="names">
+                <span class="title">1,042</span>
+                <span class="subtitle">Daily Views</span>
+              </div>
+              <div class="icon">
+                <span class="material-icons">visibility</span>
+              </div>
+            </div>
+            <div>
+              <div class="names">
+                <span class="title">80</span>
+                <span class="subtitle">Sales</span>
+              </div>
+              <div class="icon">
+                <span class="material-icons">shopping_cart</span>
+              </div>
+            </div>
+            <div>
+              <div class="names">
+                <span class="title">280</span>
+                <span class="subtitle">Comments</span>
+              </div>
+              <div class="icon">
+                <span class="material-icons">question_answery</span>
+              </div>
+            </div>
+            <div>
+              <div class="names">
+                <span class="title">$6,042</span>
+                <span class="subtitle">Earning</span>
+              </div>
+              <div class="icon">
+                <span class="material-icons">attach_money</span>
+              </div>
+            </div>
+          </div>
+          <div class="tables">
+            <div class="order">
+              <div class="order-title">
+                <span>Recent Orders</span>
+                <button>View All</button>
+              </div>
+              <table class="order-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, index) in orders">
+                    <td>{{item.name}}</td>
+                    <td>${{item.price}}</td>
+                    <td>{{item.payment}}</td>
+                    <td><span v-bind:class="`badge ${item.status}`">{{item.status}}</span></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+            <div class="customers">
+              <div class="customers-title">
+                <span>Recent Customers</span>
+              </div>
+              <div class="list-customers">
+                <div class="item" v-for="(item, index) in customers" v-bind:key="index">
+                  <img v-bind:src="`https://randomuser.me/api/portraits/men/${80+index}.jpg`" alt="">
+                  <div>
+                    <span class="name">{{item.name}}</span>
+                    <span class="Country">{{item.country}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        
+        var app = new Vue({
+            el: '#app',
+            data: {
+              orders: [
+                {
+                  name: "Star Refrigerator",
+                  price: 1200,
+                  payment: "Paid",
+                  status: "To-do"
+                },
+                {
+                  name: "Coca-Cola",
+                  price: 376,
+                  payment: "Due",
+                  status: "Done"
+                },
+                {
+                  name: "Apple watch",
+                  price: 683,
+                  payment: "Due",
+                  status: "In-Progress"
+                },
+                {
+                  name: "Sansung",
+                  price: 921,
+                  payment: "Paid",
+                  status: "To-do"
+                },
+                {
+                  name: "Microsoft",
+                  price: 538,
+                  payment: "Due",
+                  status: "In-Progress"
+                },
+                {
+                  name: "Walmart",
+                  price: 1824,
+                  payment: "Paid",
+                  status: "Done"
+                },
+                {
+                  name: "Youtube",
+                  price: 851,
+                  payment: "Due",
+                  status: "In-Progress"
+                },
+                {
+                  name: "Google",
+                  price: 456,
+                  payment: "Paid",
+                  status: "To-do"
+                },
+                
+              ],
+              customers: [
+                {
+                  name: "David",
+                  country: "Italy"
+                },
+                {
+                  name: "Muhammed",
+                  country: "India"
+                },
+                {
+                  name: "Jorge",
+                  country: "France"
+                },
+                {
+                  name: "Harry",
+                  country: "USA"
+                },
+                {
+                  name: "Amit",
+                  country: "Japan"
+                },
+                {
+                  name: "Vector",
+                  country: "Malaysia"
+                },
+
+              ]
+            },
+            mounted(){
+                
+                const ul = document.querySelector(".list")
+                const li = document.querySelectorAll(".nav-item")
+                li.forEach(el=>{
+                  el.addEventListener("click", async ()=>{
+                    if(!ul.querySelector(".active")){
+                      await el.classList.add("active")
+                    }else{
+                      ul.querySelector(".active").classList.remove("active")
+                      await el.classList.add("active")
+                    }
+                    
+                    
+                  })
+                })
+              
+            }
+        })
+    </script>
+  </body>
+</html>
